@@ -2516,4 +2516,13 @@ class Gantry
 		}
 		return $cookieUrl;
 	}
+	
+	/**
+	 * @return array of twoFactorMethods
+	 */
+	public static function getTwoFactorMethods()
+	{
+		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+		return UsersHelper::getTwoFactorMethods();
+	}
 }

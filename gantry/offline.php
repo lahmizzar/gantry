@@ -16,7 +16,7 @@ $gantry->init();
 
 $doc = JFactory::getDocument();
 $app = JFactory::getApplication();
-$twofactormethods = ModLoginHelper::getTwoFactorMethods();
+$twofactormethods = $gantry->getTwoFactorMethods();
 
 $gantry->addStyle('grid-responsive.css', 5);
 $gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
