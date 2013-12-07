@@ -16,7 +16,10 @@ $gantry->init();
 
 $doc = JFactory::getDocument();
 $app = JFactory::getApplication();
-$twofactormethods = $gantry->getTwoFactorMethods();
+
+// get two factor auth methods
+require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+$twofactormethods = UsersHelper::getTwoFactorMethods();
 
 $gantry->addStyle('grid-responsive.css', 5);
 $gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
