@@ -16,6 +16,7 @@ $gantry->init();
 
 $doc = JFactory::getDocument();
 $app = JFactory::getApplication();
+$twofactormethods = ModLoginHelper::getTwoFactorMethods();
 
 $gantry->addStyle('grid-responsive.css', 5);
 $gantry->addLess('bootstrap.less', 'bootstrap.css', 6);
@@ -76,6 +77,14 @@ ob_start();
 													<input type="password" name="password" class="inputbox" alt="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" id="passwd" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" />
 												</div>
 											</div>
+											<?php if (isset($twofactormethods) && ($twofactormethods) > 1): ?>
+											<div class="control-group">
+												<label class="control-label" for="modlgn-secretkey"><?php echo JText::_('JGLOBAL_SECRETKEY') ?> <span class="icon-help hasTooltip" title="<?php echo JText::_('JGLOBAL_SECRETKEY_HELP'); ?>"></span></label> 
+												<div class="controls">
+													<input type="text" name="secretkey" class="inputbox" alt="<?php echo JText::_('JGLOBAL_SECRETKEY') ?>" id="modlgn-secretkey" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY') ?>" />
+												</div>
+											</div>
+											<?php endif; ?>
 											<div class="control-group">
 												<div class="controls">
 													<label for="remember"><?php echo JText::_('JGLOBAL_REMEMBER_ME') ?>
