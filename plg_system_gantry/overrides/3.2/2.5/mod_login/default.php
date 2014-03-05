@@ -14,11 +14,11 @@ JHtml::_('behavior.keepalive');
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form">
 <?php if ($params->get('greeting')) : ?>
 	<div class="login-greeting">
-	<?php if($params->get('name') == 0) : {
-		echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('name')));
-	} else : {
-		echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('username')));
-	} endif; ?>
+		<?php if ($params->get('name') == 0) : ?>
+			<?php echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('name'))); ?>
+		<?php else : ?>
+		 	<?php echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('username'))); ?>
+		<?php endif; ?>
 	</div>
 <?php endif; ?>
 	<div class="logout-button">
@@ -45,7 +45,7 @@ JHtml::_('behavior.keepalive');
 		<label for="modlgn-passwd"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
 		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18"  />
 	</p>
-	<?php if (isset($twofactormethods) && ($twofactormethods) > 1): ?>
+	<?php if (count($twofactormethods) > 1) : ?>
 	<p id="form-login-secretkey">
 			<label for="modlgn-secretkey"><?php echo JText::_('JGLOBAL_SECRETKEY') ?> <span class="icon-help hasTooltip" title="<?php echo JText::_('JGLOBAL_SECRETKEY_HELP'); ?>"></span></label> 
 
@@ -74,9 +74,8 @@ JHtml::_('behavior.keepalive');
 			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
 			<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?></a>
 		</li>
-		<?php
-		$usersConfig = JComponentHelper::getParams('com_users');
-		if ($usersConfig->get('allowUserRegistration')) : ?>
+		<?php $usersConfig = JComponentHelper::getParams('com_users'); ?>
+		<?php if ($usersConfig->get('allowUserRegistration')) : ?>
 		<li>
 			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
 				<?php echo JText::_('MOD_LOGIN_REGISTER'); ?></a>

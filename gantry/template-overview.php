@@ -11,7 +11,7 @@
 	</ul>
 </div>
 <div class="template-description">
-	<h1><?php echo $gantry->get('template_full_name');?> <span class="g4-version">v<?php echo "4.0";//$gantry->_template->getVersion();?></span></h1>
+	<h1><?php echo $gantry->get('template_full_name');?> <span class="g4-version">v<?php echo $gantry->_template->getVersion();?></span></h1>
 	<h2>Gantry Framework Base Theme</h2>
 
 	<p>The Gantry Framework base theme is a clean modern responsive design that is a great place to start when building your custom Gantry powered theme.</p>

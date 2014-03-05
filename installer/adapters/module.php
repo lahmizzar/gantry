@@ -1,9 +1,9 @@
 <?php
 /**
  * @package   Installer Bundle Framework - RocketTheme
- * @version   4.1.20 December 5, 2013
+ * @version   4.1.21 February 28, 2014
  * @author    RocketTheme http://www.rockettheme.com
- * @copyright Copyright (C) 2007 - 2013 RocketTheme, LLC
+ * @copyright Copyright (C) 2007 - 2014 RocketTheme, LLC
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
  *
  * Installer uses the Joomla Framework (http://www.joomla.org), a GNU/GPLv2 content management system
@@ -197,7 +197,7 @@ class RokInstallerModule extends JInstallerModule
 
         try
         {
-            $modules = $db->loadResultArray();
+            $modules = $db->loadColumn();
         }
         catch (JException $e)
         {

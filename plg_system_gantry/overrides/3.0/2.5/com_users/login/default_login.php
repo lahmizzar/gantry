@@ -2,12 +2,13 @@
 /**
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ *
+ * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @since		1.5
  */
 
 defined('_JEXEC') or die;
+
 JHtml::_('behavior.keepalive');
 ?>
 <div class="login<?php echo $this->pageclass_sfx?>">
@@ -42,6 +43,20 @@ JHtml::_('behavior.keepalive');
 					<?php echo $field->input; ?></div>
 				<?php endif; ?>
 			<?php endforeach; ?>
+
+			<?php $tfa = JPluginHelper::getPlugin('twofactorauth'); ?>
+
+			<?php if (!is_null($tfa) && $tfa != array()): ?>
+				<div class="control-group">
+					<div class="control-label">
+						<?php echo $this->form->getField('secretkey')->label; ?>
+					</div>
+					<div class="controls">
+						<?php echo $this->form->getField('secretkey')->input; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+
 			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
 			<div class="login-fields">
 				<label id="remember-lbl" for="remember"><?php echo JText::_('JGLOBAL_REMEMBER_ME') ?></label>
